@@ -1,0 +1,94 @@
+/* .container {
+  width: 100%;
+  background-color: var(--background-yellow);
+  color: white;
+  padding: 1.5em;
+}
+
+.text {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text p {
+  font-size: 1.2em;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.text p strong {
+  font-weight: 600;
+}
+
+.text button {
+  background-color: var(--cart-button);
+  transition: 0.3s;
+}
+
+.text button:hover,
+.text button:active {
+  background-color: white;
+  color: var(--cart-button);
+} */
+
+.container {
+  width: 100%;
+  background-color: var(--background-yellow);
+  color: white;
+  padding: 1.5em;
+}
+
+.text {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.text p {
+  font-size: 1.2em;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.text p strong {
+  font-weight: 600;
+}
+
+.text button {
+  background-color: var(--cart-button);
+  transition: 0.3s;
+}
+
+.text button:hover,
+.text button:active {
+  background-color: white;
+  color: var(--cart-button);
+}
+
+@media only screen and (min-width: 600px) {
+  .text {
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 777px) {
+  .text {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 996px) {
+  .text {
+    width: 55%;
+  }
+}

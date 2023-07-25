@@ -1,0 +1,9 @@
+.icon {
+  cursor: pointer;
+  font-size: 2em;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

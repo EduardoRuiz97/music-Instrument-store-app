@@ -1,0 +1,42 @@
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.modal {
+  width: 95%;
+  max-height: 75%;
+  position: fixed;
+  top: 15%;
+  left: 2.5%;
+  background-color: white;
+  z-index: 100000;
+}
+
+
+@media only screen and (min-width: 600px) {
+  .modal {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+@media only screen and (min-width: 996px) {
+  .modal {
+    width: 60%;
+    left: 20%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .modal {
+    width: 40%;
+    left: 30%;
+  }
+}

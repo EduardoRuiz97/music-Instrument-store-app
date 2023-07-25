@@ -1,0 +1,55 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.form input {
+  padding: 10px 15px;
+  border-radius: 5px;
+  outline: none;
+  background-color: rgb(255, 255, 255,0.1);
+  border: none;
+  color: white;
+}
+
+.form button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--background-yellow);
+  color: white;
+  transition: 0.3s;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.form button:hover,
+.form button:active {
+  background-color: white;
+  color: var(--cart-button);
+}
+
+
+@media only screen and (min-width: 600px) {
+  .form {
+    width: 75%;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 777px) {
+  .form {
+    width: 50%;
+    margin: unset;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 996px) {
+  .form {
+    width: 20%;
+    margin: unset;
+    margin-right: unset;
+  }
+}

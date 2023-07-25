@@ -1,0 +1,198 @@
+.nav {
+  background-color: var(--background-yellow);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 1em 10%;
+  overflow: hidden;
+}
+
+
+.menuModal {
+  position: fixed;
+  width: 70vw;
+  height: 100vh;
+  background-color: white;
+  top: 0;
+  right: 0;
+  transform: translate(110%);
+  z-index: 100;
+  padding: 20% 10%;
+  transition: 0.3s transform ease-in-out;
+}
+
+.menuModal ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.link {
+  color: var(--text-color);
+  transition: 0.3s;
+  font-size: 1.2em;
+}
+
+.link:hover {
+  color: var(--titles);
+  font-weight: 500;
+}
+
+.logCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logCont:hover .button {
+  color: var(--background-yellow);
+}
+
+.logCont span {
+  color: var(--titles);
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.logCont img {
+  width: 50px;
+  height: 50px;
+}
+
+.logCont button {
+  background-color: transparent;
+  margin-top: 5px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+}
+
+.logCont:hover .icon {
+  color: var(--background-yellow);
+}
+
+.logCont:hover span {
+  color: var(--background-yellow);
+}
+
+.open {
+  transform: translate(0%);
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.menu {
+  color: white;
+  font-size: 45px;
+  cursor: pointer;
+}
+
+.menu:hover,
+.menu:active {
+  color: var(--titles);
+}
+
+.close {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 5%;
+  right: 20%;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.close:hover,
+.close:active {
+  color: var(--background-yellow);
+}
+
+.logOut {
+  color: var(--titles);
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.logOut:hover {
+  color: var(--text-color)
+}
+
+
+@media only screen and (min-width: 700px) {
+  .menuModal {
+    width: 50vw;
+  }
+}
+
+@media only screen and (min-width: 996px) {
+
+  .menuModal {
+    position: unset;
+    width: 70%;
+    height: unset;
+    background-color: unset;
+    transform: unset;
+    z-index: 100;
+    padding: unset;
+  }
+
+  .menuModal ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: unset;
+  }
+
+  .link {
+    font-size: 1em;
+    color: white;
+    font-weight: 600;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .close {
+    display: none;
+  }
+
+  .icon {
+    color: white;
+  }
+
+  .logCont span {
+    color: white;
+  }
+
+  .logCont:hover .icon {
+    color: var(--titles);
+  }
+  
+  .logCont:hover span {
+    color: var(--titles);
+  }
+
+  .logOut {
+    color: white;
+  }
+  
+  .logOut:hover {
+    color: var(--titles)
+  }
+
+}

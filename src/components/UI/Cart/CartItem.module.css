@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgb(233, 233, 233);
+  padding: 1em 0.5em
+}
+
+.container img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-grow: 1;
+}
+
+.product span {
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+.name {
+  width: 25%;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--titles);
+  word-wrap: break-word;
+  flex-grow: 1;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.actions button {
+  width: 40px;
+  height: 20px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  background-color: white;
+  border: 1px solid rgb(219, 219, 219);
+  color: var(--text-color);
+  border-radius: 5px;
+  transition: 0.3s;
+  font-size: 1em;
+}
+
+.actions button:hover,
+.actions button:active {
+  color: white;
+  background-color: var(--titles);
+  opacity: 0.8;
+}
+
+.cost {
+  font-weight: 400;
+  color: var(--text-color);
+  flex-grow: 1;
+}
+
+.icon {
+  font-size: 1.25em;
+  cursor: pointer;
+  color:var(--text-color);
+}
+
+.icon:hover {
+  color: var(--titles);
+}

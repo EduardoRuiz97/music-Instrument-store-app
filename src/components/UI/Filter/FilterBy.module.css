@@ -1,0 +1,56 @@
+.menu {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.3em;
+  font-size: 0.95em;
+  font-weight: 500;
+  position: absolute;
+  background-color: white;
+  top: 120%;
+  left: 0%;
+  z-index: 100;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+}
+
+.open {
+  padding: 1em 10px;
+  height: auto;
+}
+
+.menu li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu li label {
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.menu li label:hover {
+  color: var(--cart-button);
+}
+
+@media only screen and (min-width: 600px) {
+  .open  {
+    padding: 1em 2em;
+  }
+}
+
+@media only screen and (min-width: 996px) {
+  .menu  {
+    height: auto;
+    padding: 1em 10px;
+    position: unset;
+  }
+
+}

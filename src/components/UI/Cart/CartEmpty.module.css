@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+}
+
+.container img {
+  height: 300px;
+}
+
+.container span {
+  color: var(--text-color);
+  font-size: 1.2em;
+  font-weight: 500;
+}

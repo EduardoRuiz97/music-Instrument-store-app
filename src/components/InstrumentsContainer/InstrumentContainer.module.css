@@ -1,0 +1,14 @@
+.section {
+  width: 100%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 996px) {
+  .section {
+    display: grid;
+    grid-template-columns: 15% 80%;
+    column-gap: 5%;
+  }
+}
