@@ -1,11 +1,11 @@
 import classes from './ListItem.module.css';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Button from '../UI/Button/Button';
 
 const ListItem = (props) => {
   return (
     <li className={classes.item}>
-      <Link className={`${classes.link} 'links'`} to={props.item.id}>
+      <Link className={`${classes.link} 'links'`} href='/'>
         <div className={classes.container}>
           <img src={props.item.img[0]} alt={props.item.model}></img>
           <span className={classes.model}>{props.item.model}</span>

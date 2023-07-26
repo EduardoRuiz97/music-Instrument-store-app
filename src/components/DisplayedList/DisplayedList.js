@@ -1,8 +1,9 @@
+"use client"
 import { useEffect, useState } from "react";
 import classes from './DisplayedList.module.css';
-import Sorter from "../UI/Sorter/Sorter";
 import InstrumentList from "../InstrumentsList/InstrumentList";
 import Pagination from "../UI/Pagination/Pagination";
+import Sorter from "../UI/Sorter/Sorter";
 
 const DisplayedList = (props) => {
 
@@ -11,62 +12,6 @@ const DisplayedList = (props) => {
   useEffect(()=> {
     setSortedArray(props.data);
   }, [props.data]);
-
-  //filter
-  
-  //Sorter section
-  
-  let sorted = [];
-  const sorterHandler = (criteria) => {
-    if (criteria === 'brand') {
-      sorted = sortedArray.sort((a,b) => {
-        const aBrand = a.brand.toLowerCase();
-        const bBrand = b.brand.toLowerCase(); 
-
-        if (aBrand < bBrand) {
-          return -1;
-        }
-
-        if (aBrand > bBrand) {
-          return 1;
-        }
-
-        return 0;
-      }).map(items => items);
-
-      setSortedArray(sorted);
-    };
-
-    if(criteria === 'high') {
-      sorted = sortedArray.sort((a,b) => {
-        let aPrice = Number(a.price).toFixed(2);
-        let bPrice = Number(b.price).toFixed(2);
-        return (bPrice - aPrice);
-      }).map(items => items);
-
-      setSortedArray(sorted);
-    };
-
-    if(criteria === 'low') {
-      sorted = sortedArray.sort((a,b) => {
-        let aPrice = Number(a.price).toFixed(2);
-        let bPrice = Number(b.price).toFixed(2);
-        return (aPrice - bPrice);
-      }).map(items => items);
-
-      setSortedArray(sorted);
-    };
-
-    if(criteria === 'best') {
-      sorted = sortedArray.sort((a,b) => {
-        let aPrice = Number(a.rate).toFixed(1);
-        let bPrice = Number(b.rate).toFixed(1);
-        return (bPrice - aPrice);
-      }).map(items => items);
-
-      setSortedArray(sorted);
-    };
-  }
 
   //Pagination section//
 
@@ -82,7 +27,10 @@ const DisplayedList = (props) => {
     }
     setInitialIndex(initialIndex + direction);
   }
-  
+
+  const onSorterHandler = (sortedArray) => {
+    setSortedArray(sortedArray);
+  }
 
   return (
     <div className={classes.container}>
@@ -94,7 +42,7 @@ const DisplayedList = (props) => {
         </div>
 
         <div className={classes.sorter}>
-          <Sorter onSorter={sorterHandler}/>
+          <Sorter onSorter={onSorterHandler} data={props.data}/>
         </div>
 
         <div className={classes['pagination-up']}>

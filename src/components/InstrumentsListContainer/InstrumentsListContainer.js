@@ -1,9 +1,10 @@
-import classes from './InstrumentContainer.module.css';
-import AsideFilter from '../UI/Filter/AsideFilter';
-import DisplayedList from '../DisplayedList/DisplayedList';
+"use client"
+import classes from './InstrumentsListContainer.module.css';
 import { useEffect, useState } from 'react';
+import AsideFilter from '../UI/AsideFilter/AsideFilter';
+import DisplayedList from '../DisplayedList/DisplayedList';
 
-const InstrumentContainer = (props) => {
+const InstrumentsListContainer = (props) => {
 
   const [filtratedArray, setFiltratedArray] = useState([]);
 
@@ -51,4 +52,4 @@ const InstrumentContainer = (props) => {
   )
 };
 
-export default InstrumentContainer;
+export default InstrumentsListContainer;

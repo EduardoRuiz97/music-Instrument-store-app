@@ -1,0 +1,19 @@
+.main {
+  width: 95%;
+  margin: 5% auto;
+}
+
+
+
+@media only screen and (min-width: 777px) {
+  .main {
+    width: 90%;
+  }
+}
+
+
+@media only screen and (min-width: 1400px) {
+  .main {
+    width: 85%;
+  }
+}

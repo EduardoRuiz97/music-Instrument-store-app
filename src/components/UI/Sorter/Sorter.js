@@ -1,5 +1,5 @@
-import React from 'react';
-import Select from 'react-select';
+import sorterSelector from '@/sorterSelector';
+import CustomSelect from '../customSelect/CustomSelect';
 
 const options = [
   { value: 'brand', label: 'Brand name(A-Z)' },
@@ -8,27 +8,22 @@ const options = [
   { value: 'best', label: 'Best Sellings' }
 ]
 
-const colorStyles =  {
-  control: (styles) => ({...styles, fontWeight: '600', fontSize: '1em', width: '100%'}),
-
-  option: (styles, {isSelected}) => {
-    return {...styles, fontWeight: '500', color: isSelected ? 'white' : ' rgb(119, 119, 119)', backgroundColor: isSelected ? '#F8B803' : 'white'}
-  }
-};
-
-
-
+let sorted;
 
 const Sorter = (props) => {
-  
-  const sorterHandler = (event) => {
-    props.onSorter(event.value);
+
+  const sorterHandler = (criteria) => {
+    sorted = sorterSelector(criteria, props.data);
+    props.onSorter(sorted);
   }
 
+
   return (
-    <>
-      <Select options={options} styles={colorStyles} onChange={sorterHandler}/>
-    </>
+    <CustomSelect 
+    options={options} 
+    default='Sort By' 
+    onOption={sorterHandler}
+    />
   )
 }
 

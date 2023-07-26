@@ -1,7 +1,8 @@
+"use client"
 import Item from "./Item";
 import classes from './Filter.module.css';
 
-const Filter = (props) => {
+const InstrumentFilter = (props) => {
 
   const types = props.data?.map(item => {
     let type = item.instrument;
@@ -23,4 +24,4 @@ const Filter = (props) => {
   )
 };
 
-export default Filter;
+export default InstrumentFilter;

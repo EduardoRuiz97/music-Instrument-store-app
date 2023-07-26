@@ -1,0 +1,11 @@
+.loading {
+  width: 70vw;
+  height: 80vh;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10%;
+  color: var(--text-color);
+}

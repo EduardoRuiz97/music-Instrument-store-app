@@ -13,7 +13,7 @@
   --background-yellow: #F8B803;
   --titles: #242424;
   --cart-button: #252424;
-  --text-color: #777777;
+  --text-color: rgb(119, 119, 119);
   --discount: #669904;
   --red: #f03a22;
 }
@@ -41,4 +41,8 @@ body {
 
 .links {
   color: unset;
+}
+
+.loading {
+  background-color: rgba(0, 0, 0, 0.367);
 }

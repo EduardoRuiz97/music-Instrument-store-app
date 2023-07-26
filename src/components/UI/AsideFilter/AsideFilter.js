@@ -1,5 +1,6 @@
-import FilterByBrand from "./FilterByBrand/FilterByBrand";
-import FilterByPrice from "./FilterByPrice/FilterByPrice";
+"use client"
+import FilterByBrand from "../FiltersBy/FilterByBrand/FilterByBrand";
+import FilterByPrice from "../FiltersBy/FilterByPrice/FilterByPrice";
 import classes from './AsideFilter.module.css';
 import { useState } from "react";
 
