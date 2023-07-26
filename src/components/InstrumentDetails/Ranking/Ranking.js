@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from 'next/link';
 import classes from './Ranking.module.css';
 import { AiTwotoneStar } from "react-icons/ai";
 
@@ -27,7 +27,7 @@ const Ranking = (props) => {
       <ul className={classes.list}>
         {array?.splice(0,10).map((item, index)=> 
           <li key={index}>
-            <Link to={`/instrument-list/${item.id}`} className={classes.item}>
+            <Link href={`/${item.id}`} className={classes.item}>
               <span className={classes.number}>{index + 1}</span>
               <img src={item.img[0]} alt={item.model}></img>
               <span className={classes.rate}>{item.rate.toFixed(1)} <AiTwotoneStar className={classes.icon}/></span>

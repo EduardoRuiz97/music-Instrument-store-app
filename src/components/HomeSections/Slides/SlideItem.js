@@ -32,11 +32,9 @@ const SlideItem = (props) => {
   }
 
 
-
-
   return (
     <div className={classes.container}>
-      <Link className="links" href={`/`}>
+      <Link className="links" href={`/${props.items.id}`}>
         <img src={props.items.img[0]} alt={props.items.model}></img>
       </Link>
       <span className={classes.model}>{props.items.model}</span>

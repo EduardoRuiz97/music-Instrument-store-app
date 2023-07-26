@@ -23,7 +23,7 @@ export async function getInstrumentListData(selected) {
   }
 
   await new Promise((resolve) => {
-    setTimeout(resolve, 3000); // 3000 milliseconds (3 seconds)
+    setTimeout(resolve, 2000); // 3000 milliseconds (3 seconds)
   });
 
   const data = await response.json();

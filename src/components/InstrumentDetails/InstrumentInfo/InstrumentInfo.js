@@ -1,3 +1,4 @@
+"use client"
 import { AiTwotoneStar } from "react-icons/ai";
 import CartForm from "../CartForm/CartForm";
 import classes from  './InstrumentInfo.module.css';

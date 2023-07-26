@@ -43,7 +43,25 @@ export default function SliderSelector(criteria, data) {
         parag: `Buy a musical instrument you've always dreamed of`
       };
     break;
+
   }
 
   return resultArray;
+}
+
+
+export function relatedSlideSelector (criteria, data) {
+
+  function randomSort() {
+    return Math.random() - 0.5;
+  }
+
+  let displayedSlideItems = data?.filter(item => {
+    if(item.brand === criteria) {
+      return item;
+    }
+  }).sort(randomSort).slice(0,10);
+  
+  return displayedSlideItems;
+
 }

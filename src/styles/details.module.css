@@ -1,0 +1,48 @@
+.main {
+  width: 95%;
+  margin: 5% auto;
+}
+
+.navigation {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 1em;
+  color: var(--titles);
+}
+
+.section {
+  margin-bottom: 1em;
+}
+
+.reviews {
+  padding: 5%;
+}
+
+
+@media only screen and (min-width: 777px) {
+  .main {
+    width: 87.5%;
+  }
+}
+
+@media only screen and (min-width: 996px) {
+  .itemInfo {
+    display: grid;
+    grid-template-columns: 50% 45%;
+    column-gap: 5%;
+  }
+
+  .reviews {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    column-gap: 5%;
+  }
+}
+
+
+@media only screen and (min-width: 1400px) {
+  .main {
+    width: 75%;
+    margin: 3% auto;
+  }
+}
