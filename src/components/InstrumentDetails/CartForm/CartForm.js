@@ -5,13 +5,13 @@ import { BsCheckLg } from "react-icons/bs";
 import { useState } from "react";
 import classes from './CartForm.module.css';
 import { IoStorefrontSharp } from "react-icons/io5";
-// import { useDispatch } from "react-redux";
-// import { cartActions } from "../../../store/cart-slice/cart-slice";
+import { useDispatch } from "react-redux";
+import { cartSliceActions } from "@/redux/features/car-slice";
 
 
 const CartForm = (props) => {
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   let availability = 'Click to check store availability';
 
@@ -58,8 +58,7 @@ const CartForm = (props) => {
       quantity,
     }
 
-    // dispatch(cartActions.addToCart(item));
-
+    dispatch(cartSliceActions.addItemToCart(item));
 
   }
 

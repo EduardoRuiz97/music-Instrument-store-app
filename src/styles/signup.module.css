@@ -1,0 +1,60 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(240, 240, 240);
+}
+
+.layer {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../public/assets/martin-rajdl-Dc9iNnJXxtw-unsplash-removebg-preview.png');
+  background-position-y: 100%;
+  background-position-x: 50%;
+  background-size: 200px;
+  background-repeat: no-repeat;
+
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+  text-align: center;
+  padding-top: 7.5%;
+}
+
+.container span {
+  font-size: 0.85em;
+  color: var(--titles);
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.container h1 {
+  font-size: 3em;
+  color: var(--titles);
+  margin-bottom: 0.5em;
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 777px) {
+  .container {
+    width: 65%;
+  }
+}
+
+@media only screen and (min-width: 996px) {
+  .container {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 40%;
+  }
+}

@@ -1,28 +1,28 @@
 import Button from "../Button/Button";
-import Modal from "../Modal/Modal";
-import { cartActions } from "../../../store/cart-slice/cart-slice";
+import ModalOverlay from "../Modal/Modal";
+import { cartSliceActions } from "@/redux/features/car-slice";
 import { useDispatch } from "react-redux";
 import { IoCloseOutline } from "react-icons/io5";
 import classes from './Cart.module.css';
 import CartItem from "./CartItems";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import CartEmpty from "./CartEmpty";
+import Link from "next/link";
 
 
 const Cart = () => {
   
   const dispatch = useDispatch();
-  const cartData = useSelector(state => state.cart.cartItems);
-  const total = useSelector(state => state.cart.totalPrice);
-  const isSignIn = localStorage.getItem('isSignIn')
+  const cartData = useSelector(state => state.cart.items);
+  const total = useSelector(state => state.cart.totalCost);
+  const isSignIn = useSelector(state => state.logged.isLoggedIn);
 
   const closeCartHandler = () => {
-    dispatch(cartActions.closeCartHandler());
+    dispatch(cartSliceActions.closeCartHandler());
   };
 
   return (
-    <Modal onClick={closeCartHandler}>
+    <ModalOverlay>
 
         <div className={classes.title}>Shopping cart 
         <IoCloseOutline style={{cursor: 'pointer'}} onClick={closeCartHandler}/>
@@ -45,7 +45,7 @@ const Cart = () => {
             </div>
 
             {!isSignIn && <span className={classes.warn}>
-              <strong><Link to='/sign-in' className='links'>Sign In</Link></strong> or <Link to='/create-account' classes='links'><strong>create an account</strong></Link> to proceed with your purchase
+              <strong><Link href='/login' className='links'>Sign In</Link></strong> or <Link href='/signup' classes='links'><strong>create an account</strong></Link> to proceed with your purchase
             </span>}
 
             <Button disabled={!isSignIn}>Place order</Button>
@@ -53,7 +53,7 @@ const Cart = () => {
           
           : <CartEmpty />}
         </div>
-    </Modal>
+    </ModalOverlay>
   )
 };
 

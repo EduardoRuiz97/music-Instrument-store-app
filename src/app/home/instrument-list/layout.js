@@ -2,7 +2,7 @@
 
 import InstrumentFilter from "@/components/UI/InstrumentFilter/Filter";
 import { useRouter } from "next/navigation";
-import classes from '../../styles/InstrumentsList.module.css';
+import classes from '../../../styles/InstrumentsList.module.css';
 
 
 const InstrumentsPageLayout = async ({children}) => {
@@ -13,7 +13,7 @@ const InstrumentsPageLayout = async ({children}) => {
 
 
   const selectInstrumentHandler = (instrument) => {
-    router.push(`/instrument-list/${instrument}`)
+    router.push(`/home/instrument-list/${instrument}`)
   }
 
 

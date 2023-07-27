@@ -1,49 +1,64 @@
-import { Link, useNavigate} from "react-router-dom";
+"use client"
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import classes from './SignInForm.module.css';
-import useFormHook from "../../Hooks/useFormHook";
-import { useDispatch } from "react-redux";
-import { signInActions } from "../../store/signIn-slice/sing-slice"
-
+import useLoginForm from '@/hooks/useFormHook';
+import { useDispatch } from 'react-redux';
+import { loggedInActions } from '@/redux/features/autentication';
 
 
 const SignUpForm = () => {
 
+  const router = useRouter();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
 
   const {
-    value: enteredEmail,
-    inputChangeHandler: emailChangeHandler,
-    isInputValid: isEmailValid,
+    inputValue: emailValue,
+    isFormInputValid: isEmailValid,
+    inputValueHandler: emailValueHandler,
+    blurInputHandler: blurEmailHandler,
     resetInput: resetEmail,
-  } = useFormHook(input => input.trim() !== '' && input.includes('@'));
+  } = useLoginForm(email => email.includes('@') && email.includes('.'));
 
   const {
-    value: enteredPassword,
-    inputChangeHandler: passwordChangeHandler,
-    isInputValid: isPasswordValid,
+    inputValue: passwordValue,
+    isFormInputValid: isPasswordValid,
+    inputValueHandler: passwordValueHandler,
+    blurInputHandler: blurPasswordHandler,
     resetInput: resetPassword,
-  } = useFormHook(input => input.trim() !== '' && input.trim().length > 10);
+  } = useLoginForm(password => password.trim().length > 8);
 
-  let formIsValid = false;
+  let isFormValid = false;
+
 
   if (isEmailValid && isPasswordValid) {
-    formIsValid = true;
-  } 
+    isFormValid = true;
+  }
 
-  const submitFormHandler = (event) => {
+
+  const submitHandler = (event) => {
+
 
     event.preventDefault();
 
-    if (!formIsValid) {
+    if(!isFormValid) {
       return;
     }
+
+    const usserInfo = {
+      email: emailValue,
+      password: passwordValue,
+    }
+
+    dispatch(loggedInActions.signUp());
     
-    navigate('/')
-    dispatch(signInActions.SignIn());
     resetEmail();
     resetPassword();
+    
+    router.push('/home')
+
   }
+
 
   return (
     <div className={classes.container}>
@@ -55,29 +70,31 @@ const SignUpForm = () => {
           <p>Discover the Perfect Harmony at Melody Mart: Your One-Stop Online Destination for Musical Bliss!</p>
         </div>
 
-        <form className={classes.form} onSubmit={submitFormHandler}>
+        <form className={classes.form} onSubmit={submitHandler}>
 
           <div className={classes.inputs}>
             <input 
             type='email' 
             placeholder='email' 
             name="email"
-            onChange={emailChangeHandler}
-            value={enteredEmail}
+            value={emailValue}
+            onChange={emailValueHandler}
+            onBlur={blurEmailHandler}
             ></input>
 
             <input 
             type='password' 
             placeholder='password' 
             name="password"
-            onChange={passwordChangeHandler}
-            value={enteredPassword}
+            value={passwordValue}
+            onChange={passwordValueHandler}
+            onBlur={blurPasswordHandler}
             ></input>
           </div>
 
-          <button disabled={!formIsValid && true}>Sign in</button>
+          <button disabled={!isFormValid && true}>Sign in</button>
 
-          <Link className="links" to='/create-account'>
+          <Link className="links" href='/signup'>
             <span>Create an account</span>
           </Link>
 

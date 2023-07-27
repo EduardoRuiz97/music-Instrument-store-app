@@ -1,11 +1,11 @@
-import HomeBanner from '@/components/HomeBanner/HomeBanner'
+import HomeBanner from '@/components/HomeBanner/HomeBanner';
 import Policies from '@/components/HomeSections/Policies/Policies'
 import Promos from '@/components/HomeSections/Promos/Promos'
 import SliderSelector from '@/slideSelector';
 import ItemSlide from '@/components/HomeSections/Slides/ItemSlide';
 import AddContainer from '@/components/UI/AddContainer/AddContainer';
 import Banner from '@/components/HomeSections/Banners/Banners';
-import classes from '../styles/home.module.css';
+import classes from '../../styles/home.module.css';
 
 
 

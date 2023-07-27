@@ -1,5 +1,5 @@
 import Spinner from "@/components/UI/Spinner/Spinner";
-import classes from '../../../styles/loading.module.css';
+import classes from '../../../../styles/loading.module.css';
 
 export default function Loading () {
 

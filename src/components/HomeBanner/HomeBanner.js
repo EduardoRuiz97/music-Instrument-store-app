@@ -13,7 +13,7 @@ const HomeBanner = () => {
             <span>Melody Mart</span>
             <h1>Unleash your inner musician with us</h1>
             <p>Instruments, equipment & supplies from <strong>$50.00</strong></p>
-            <Link className="links" href='/instrument-list/guitar'>
+            <Link className="links" href='/home/instrument-list/guitar'>
               <Button>
                 Shop now
               </Button>

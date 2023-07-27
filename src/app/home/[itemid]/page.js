@@ -6,7 +6,7 @@ import Ranking from "@/components/InstrumentDetails/Ranking/Ranking";
 import Reviews from "@/components/InstrumentDetails/Reviews/Reviews";
 import { relatedSlideSelector } from "@/slideSelector";
 import Link from "next/link";
-import classes from '../../styles/details.module.css';
+import classes from '../../../styles/details.module.css';
 
 const DetailsPage = async ({params}) => {
 
@@ -27,7 +27,7 @@ const DetailsPage = async ({params}) => {
     <main className={classes.main}>
 
       <div className={classes.navigation}>
-        <Link href={'/'}>Home</Link>/ <Link href={'/instrument-list/guitar'}>Instruments list</Link>/ <strong>{`${instrumentDetails.model}`}</strong>
+        <Link href={'/home'}>Home</Link>/ <Link href={'/home/instrument-list/guitar'}>Instruments list</Link>/ <strong>{`${instrumentDetails.model}`}</strong>
       </div>
 
       <section className={`${classes.itemInfo} ${classes.section}`}>

@@ -1,7 +1,8 @@
 import { AiOutlineShopping } from "react-icons/ai";
 import classes from './CartButton.module.css';
-import { cartActions } from "../../../store/cart-slice/cart-slice";
+// import { cartActions } from "../../../redux/cart-slice/cart-slice";
 import { useDispatch } from "react-redux";
+import { cartSliceActions } from "@/redux/features/car-slice";
 
 
 const CartButton = (props) => {
@@ -9,7 +10,7 @@ const CartButton = (props) => {
   const dispatch = useDispatch();
 
   const openCartHandler = () => {
-    dispatch(cartActions.openCartHandler())
+   dispatch(cartSliceActions.openCartHandler());
   }
 
 

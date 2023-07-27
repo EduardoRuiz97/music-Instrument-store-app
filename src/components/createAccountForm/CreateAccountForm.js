@@ -1,92 +1,89 @@
+"use client"
+import useLoginForm from "@/hooks/useFormHook";
+import { useRouter } from "next/navigation";
 import Button from "../UI/Button/Button";
 import classes from './CreateAccountForm.module.css';
-import { useSubmit } from "react-router-dom";
-import useFormHook from "../../Hooks/useFormHook";
+import { loggedInActions } from "@/redux/features/autentication";
 import { useDispatch } from "react-redux";
-import { signInActions } from "../../store/signIn-slice/sing-slice";
 
 
 const CreateAccountForm = () => {
 
-  const submit = useSubmit();
-  const dispatch = useDispatch()
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   const {
-    value: enteredName,
-    inputChangeHandler: nameChangeHandler,
-    inputBlurHandler: nameBlurHandler,
+    inputValue: nameValue,
     isInputValid: isNameValid,
-    isFormFieldInvalid: isNameFieldInvalid,
+    isFormInputValid : isNameInputValid,
+    inputValueHandler: nameValueHandler,
+    blurInputHandler: blurNameHandler,
     resetInput: resetName,
-  } = useFormHook(input => input.trim() !== '');
+  } = useLoginForm(input => input !== '');
 
   const {
-    value: enteredPhone,
-    inputChangeHandler: phoneChangeHandler,
-    inputBlurHandler: phoneBlurHandler,
-    isInputValid: isPhoneValid,
-    isFormFieldInvalid: isPhoneFieldInvalid,
-    resetInput: resetPhone,
-  } = useFormHook(input => input.trim() !== '' && input.trim().length === 10);
+    inputValue : phoneValue,
+    isInputValid : isPhoneValid,
+    isFormInputValid : isPhoneInputValid,
+    inputValueHandler : phoneValueHandler,
+    blurInputHandler : blurPhoneHandler,
+    resetInput : resetPhone,
+  } = useLoginForm(input => input.trim().length === 10);
 
   const {
-    value: enteredEmail,
-    inputChangeHandler: emailChangeHandler,
-    inputBlurHandler: emailBlurHandler,
-    isInputValid: isEmailValid,
-    isFormFieldInvalid: isEmailFieldInvalid,
-    resetInput: resetEmail,
-  } = useFormHook(input => input.trim() !== '' && input.includes('@'));
+    inputValue : emailValue,
+    isInputValid : isEmailValid,
+    isFormInputValid : isEmailInputValid,
+    inputValueHandler : emailValueHandler,
+    blurInputHandler : blurEmailHandler,
+    resetInput : resetEmail,
+  } = useLoginForm(input => input.includes('@') && input.includes("."));
 
   const {
-    value: enteredPassword,
-    inputChangeHandler: passwordChangeHandler,
-    inputBlurHandler: passwordBlurHandler,
-    isInputValid: isPasswordValid,
-    isFormFieldInvalid: isPasswordFieldInvalid,
-    resetInput: resetPassword,
-  } = useFormHook(input => input.trim() !== '' && input.trim().length > 10);
+    inputValue : passwordValue,
+    isInputValid : isPasswordValid,
+    isFormInputValid : isPasswordInputValid,
+    inputValueHandler : passwordValueHandler,
+    blurInputHandler : blurPasswordHandler,
+    resetInput : resetPassword,
+  } = useLoginForm(input => input.trim().length > 10);
 
 
   let isFormValid = false;
-  let disabled = true;
 
-  if (!isNameFieldInvalid && !isPhoneFieldInvalid && !isEmailFieldInvalid && !isPasswordFieldInvalid) {
+  if (isNameInputValid && isPhoneInputValid && isEmailInputValid && isPasswordInputValid) {
     isFormValid = true;
-  };
+  }
 
-  if (isNameValid && isPhoneValid && isEmailValid && isPasswordValid) {
-    disabled = false;
-  };
-
-  let data = {
-    id: Math.random(),
-    name: enteredName,
-    phone: enteredPhone,
-    email: enteredEmail,
-    password: enteredPassword,
-  };
-
-
-  const submitFormHandler = (event) =>{
+  const submitHandler = (event) => {
     event.preventDefault();
+
 
     if (!isFormValid) {
       return;
-    } else {
-      resetName();
-      resetPhone();
-      resetEmail();
-      resetPassword();
-
-      submit(data, {method:'POST'});
-      dispatch(signInActions.signUp());
     }
+
+    const usserNewAccountData = {
+      name: nameValue,
+      phone: phoneValue,
+      email: emailValue,
+      password: passwordValue,
+    }
+
+    dispatch(loggedInActions.signUp());
+    router.push('/home');
+
+    resetName();
+    resetPhone();
+    resetEmail();
+    resetPassword();
+
   }
 
 
+
   return (
-    <form className={classes.form} onSubmit={submitFormHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <div>
         <label id="name">Name</label>
         <input 
@@ -94,13 +91,13 @@ const CreateAccountForm = () => {
           htmlFor='name' 
           placeholder="Name"
           name="name"
-          value={enteredName}
-          onChange={nameChangeHandler}
-          onBlur={nameBlurHandler}
-          className={isNameFieldInvalid? classes.wrong : ''}
+          value={nameValue}
+          onChange={nameValueHandler}
+          onBlur={blurNameHandler}
         ></input>
-        {isNameFieldInvalid && <p style={{color:'red', fontSize:'0.8em'}}>Wrong name. Can't be blank.</p>}
+        {!isNameValid && <p style={{color:'red', fontSize:'0.8em'}}>Can't be blank.</p>}
       </div>
+
 
       <div>
         <label id="phone">Phone number</label>
@@ -109,12 +106,11 @@ const CreateAccountForm = () => {
           htmlFor='phone' 
           placeholder="Phone number"
           name="phone"
-          value={enteredPhone}
-          onChange={phoneChangeHandler}
-          onBlur={phoneBlurHandler}
-          className={isPhoneFieldInvalid? classes.wrong : ''}
+          value={phoneValue}
+          onChange={phoneValueHandler}
+          onBlur={blurPhoneHandler}
         ></input>
-          {isPhoneFieldInvalid && <p style={{color:'red', fontSize:'0.8em'}}>Wrong phone number. 10 digits only.</p>}
+          {!isPhoneValid && <p style={{color:'red', fontSize:'0.8em'}}>10 digits only.</p>}
       </div>
 
       <div>
@@ -124,12 +120,11 @@ const CreateAccountForm = () => {
           htmlFor='email' 
           placeholder="Email address"
           name="email"
-          value={enteredEmail}
-          onChange={emailChangeHandler}
-          onBlur={emailBlurHandler}
-          className={isEmailFieldInvalid? classes.wrong : ''}
+          value={emailValue}
+          onChange={emailValueHandler}
+          onBlur={blurEmailHandler}
         ></input>
-          {isEmailFieldInvalid && <p style={{color:'red', fontSize:'0.8em'}}>Wrong email. Must contain the @ symbol.</p>}
+          {!isEmailValid && <p style={{color:'red', fontSize:'0.8em'}}>Must contain the @ symbol.</p>}
       </div>
 
       <div>
@@ -139,15 +134,14 @@ const CreateAccountForm = () => {
           htmlFor='password' 
           placeholder="Password"
           name="password"
-          value={enteredPassword}
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
-          className={isPasswordFieldInvalid? classes.wrong : ''}
+          value={passwordValue}
+          onChange={passwordValueHandler}
+          onBlur={blurPasswordHandler}
         ></input>
-          {isPasswordFieldInvalid && <p style={{color:'red', fontSize:'0.8em'}}>The password must contain at least 10 digits</p>}
+          {!isPasswordValid && <p style={{color:'red', fontSize:'0.8em'}}>The password must contain at least 10 digits</p>}
       </div>
 
-      <Button disabled={disabled}>Create Account</Button>
+      <Button disabled={!isFormValid && true}>Create Account</Button>
 
     </form>
   );

@@ -1,23 +1,29 @@
 import Button from "../Button/Button";
-import icon from '../../../assets/undraw_shopping_app_flsj.svg'
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import classes from './CartEmpty.module.css';
-import { cartActions } from "../../../store/cart-slice/cart-slice";
+import { cartSliceActions } from "@/redux/features/car-slice";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 
 const CartEmpty = () => {
 
   const dispatch = useDispatch();
 
   const closeCartHandler = () => {
-    dispatch(cartActions.closeCartHandler());
+    dispatch(cartSliceActions.closeCartHandler());
   }
+  
 
   return (
     <div className={classes.container}>
-      <img src={icon} alt='cart empty illustration by illustrate me'></img>
+      <Image 
+      src={'/assets/undraw_shopping_app_flsj.svg'} 
+      alt='cart empty illustration by illustrate me'
+      width={300}
+      height={300}
+      ></Image>
       <span>Cart is empty. Go check the incredible gear that is waiting for you</span>
-      <Link className='links' to='/instrument-list'>
+      <Link className='links' href='/home/instrument-list'>
         <Button onClick={closeCartHandler}>Go to instruments list</Button>
       </Link>
     </div>

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Button from "../../UI/Button/Button";
 import classes from './SlideItem.module.css';
-import { cartActions } from "../../../store/cart-slice/cart-slice";
+import { cartSliceActions } from "@/redux/features/car-slice";
 import { useDispatch } from "react-redux";
 
 const SlideItem = (props) => {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const addToCartHandler = () => {
     let price = Number(props.items.price).toFixed(2);
@@ -28,13 +28,13 @@ const SlideItem = (props) => {
       quantity: 1,
     }
 
-    // dispatch(cartActions.addToCart(item));
+    dispatch(cartSliceActions.addItemToCart(item));
   }
 
 
   return (
     <div className={classes.container}>
-      <Link className="links" href={`/${props.items.id}`}>
+      <Link className="links" href={`home/${props.items.id}`}>
         <img src={props.items.img[0]} alt={props.items.model}></img>
       </Link>
       <span className={classes.model}>{props.items.model}</span>

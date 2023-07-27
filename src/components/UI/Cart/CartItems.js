@@ -1,18 +1,21 @@
 import classes from './CartItem.module.css';
 import { MdDelete } from "react-icons/md";
 import { useDispatch } from 'react-redux';
-import { cartActions } from '../../../store/cart-slice/cart-slice';
+import { cartSliceActions } from '@/redux/features/car-slice';
 
 const CartItem = (props) => {
 
   const dispatch = useDispatch();
 
+
+
   const removeItemHandler = () => {
-    dispatch(cartActions.reduceQuantity(props.items));
+    console.log(props.items);
+    dispatch(cartSliceActions.reduceQuantity(props.items));
   }
 
   const deleteItemHandler = () => {
-    dispatch(cartActions.removeItem(props.items));
+    dispatch(cartSliceActions.removeItemFromCart(props.items));
   }
 
   const addItemHandler = () => {
@@ -22,7 +25,7 @@ const CartItem = (props) => {
       quantity: 1,
     };
 
-    dispatch(cartActions.addToCart(item));
+    dispatch(cartSliceActions.addItemToCart(item));
   }
 
 

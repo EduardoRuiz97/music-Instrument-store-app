@@ -2,52 +2,52 @@
 import Link from "next/link";
 import { BsPersonFill } from "react-icons/bs";
 import classes from './NavBar.module.css';
-import { useDispatch } from "react-redux";
-import { signInActions } from "../../store/signIn-slice/sing-slice";
+// import { signInActions } from "../../store/signIn-slice/sing-slice";
 import Image from "next/image";
 import { BiMenu } from "react-icons/bi";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useDispatch, useSelector} from "react-redux";
 import { RxAvatar } from "react-icons/rx";
+import { loggedInActions } from "@/redux/features/autentication";
+import { useRouter } from "next/navigation";
 
 
 const NavBar = () => {
 
 const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
+const router = useRouter();
 
-// const logInStatus = localStorage.getItem('isSignIn');
-// const dispatch = useDispatch();
+const dispatch = useDispatch();
+const logInStatus = useSelector(state => state.logged.isLoggedIn)
+
 
 const logOutHandler = () => {
-  const proceed = window.confirm('Are you sure?');
-
-  if (proceed) {
-    dispatch(signInActions.logOut());
-    window.location.reload();
-  }
-}
+  dispatch(loggedInActions.logOut());
+  router.refresh()
+};
 
 
-// let logStatus;
+let logStatus;
 
-// if (logInStatus) {
-//   logStatus = <div onClick={logOutHandler} className={classes.logCont}>
-//     <RxAvatar className={classes.icon}/>
-//     <button className={classes.logOut}>
-//       Log Out
-//     </button>
-//   </div>
-// } else {
-//   logStatus = 
-//     <div className={classes.logCont}>
-//       <Link className='links' to={'sign-in'}>
-//         <BsPersonFill className={classes.icon}/>
-//       </Link>
-//       <span>
-//         Sign in
-//       </span>
-//     </div>
-// };
+if (logInStatus) {
+  logStatus = <div className={classes.logCont} onClick={logOutHandler}>
+    <RxAvatar className={classes.icon}/>
+    <button className={classes.logOut}>
+      Log Out
+    </button>
+  </div>
+} else {
+  logStatus = 
+    <div className={classes.logCont}>
+      <Link className='links' href={'/login'}>
+        <BsPersonFill className={classes.icon}/>
+      </Link>
+      <span>
+        Sign in
+      </span>
+    </div>
+};
 
 
 const openMenuModal = () => {
@@ -62,7 +62,7 @@ const closeMenuModal = () => {
   return (
     <nav className={classes.nav}>
 
-      <Link href={'/'} className='links'>
+      <Link href={'/home'} className='links'>
 
       <Image src={'/assets/logoPage.png'} alt='melody mart logo' className={classes.logo} width={100} height={100}></Image>
 
@@ -72,15 +72,15 @@ const closeMenuModal = () => {
       <div className={isMenuModalOpen? `${classes.menuModal} ${classes.open}` : classes.menuModal }>
         <ul>
           <li>
-            <Link href='/new-arrivals' className={classes.link}>New Arrivals</Link>
+            <Link href='/' className={classes.link}>New Arrivals</Link>
           </li>
 
           <li>
-            <Link href='/best-sellings' className={classes.link}>Best-sellings</Link>
+            <Link href='/' className={classes.link}>Best-sellings</Link>
           </li>
 
           <li>
-            <Link href='/best-deals' className={classes.link}>Best deals</Link>
+            <Link href='/' className={classes.link}>Best deals</Link>
           </li>
 
           <li>
@@ -93,7 +93,7 @@ const closeMenuModal = () => {
 
 
           <li className={classes.logCont}>
-            {/* {logStatus} */}
+            {logStatus}
           </li>
         </ul>
 
