@@ -23,7 +23,7 @@ const CartEmpty = () => {
       height={300}
       ></Image>
       <span>Cart is empty. Go check the incredible gear that is waiting for you</span>
-      <Link className='links' href='/home/instrument-list'>
+      <Link className='links' href='/home/instrument-list/guitar'>
         <Button onClick={closeCartHandler}>Go to instruments list</Button>
       </Link>
     </div>

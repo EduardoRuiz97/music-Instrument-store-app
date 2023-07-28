@@ -55,7 +55,7 @@ export default async function Home() {
 
 
 export async function getData() {
-  const response = await fetch('https://instruments-364af-default-rtdb.firebaseio.com/instruments.json');
+  const response = await fetch('https://instruments-364af-default-rtdb.firebaseio.com/instruments.json', { next: { revalidate: 10 } });
 
   if (!response.ok) {
     return;

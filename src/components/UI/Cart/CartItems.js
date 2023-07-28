@@ -7,10 +7,7 @@ const CartItem = (props) => {
 
   const dispatch = useDispatch();
 
-
-
   const removeItemHandler = () => {
-    console.log(props.items);
     dispatch(cartSliceActions.reduceQuantity(props.items));
   }
 

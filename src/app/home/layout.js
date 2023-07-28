@@ -1,10 +1,13 @@
+
 import Layout from '@/components/Layout/Layout';
 
+export default async function RootLayout({ children }) {
 
-export default function RootLayout({ children }) {
   return (
-    <Layout>
+    <Layout >
       {children}
     </Layout>
   )
-}
+};
+
+

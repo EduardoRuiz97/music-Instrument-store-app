@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { BsPersonFill } from "react-icons/bs";
 import classes from './NavBar.module.css';
-// import { signInActions } from "../../store/signIn-slice/sing-slice";
 import Image from "next/image";
 import { BiMenu } from "react-icons/bi";
 import { useState } from "react";

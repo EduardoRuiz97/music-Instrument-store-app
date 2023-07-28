@@ -23,7 +23,8 @@ const cartSlice = createSlice({
       } else {
         existingItem.quantity = existingItem.quantity + actions.payload.quantity;
       };
-    },
+
+     },
     removeItemFromCart(state, actions) {
       state.cartChanged = true;
 
@@ -33,11 +34,11 @@ const cartSlice = createSlice({
     },
     reduceQuantity(state, actions) {
 
-      state.changed = true;
+      state.cartChanged = true;
       
       let updatedTotal = state.totalCost - actions.payload.totalCost;
 
-      state.totalPrice = updatedTotal;
+      state.totalCost = updatedTotal;
 
       let existingItem = state.items.find(items => items.id === actions.payload.id);
 
@@ -46,9 +47,6 @@ const cartSlice = createSlice({
       } else {
         existingItem.quantity--;
       } 
-    },
-    updateCart(state, actions) {
-      
     },
     openCartHandler(state) {
       state.isCartOpen = true;

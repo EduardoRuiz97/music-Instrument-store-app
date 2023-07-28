@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const getLocalStorageState = () => {
-  const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
-  return storedIsLoggedIn === "true";
+  if (typeof window !== 'undefined') {
+    const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
+    return storedIsLoggedIn === "true";
+  }
+  return false; // Default value if localStorage is not available
 };
 
 
