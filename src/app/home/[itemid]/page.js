@@ -8,6 +8,14 @@ import { relatedSlideSelector } from "@/slideSelector";
 import Link from "next/link";
 import classes from '../../../styles/details.module.css';
 
+
+export const metadata = {
+  title: 'Melody Mart - Instrument details',
+  description: 'Melody Mart instrument details page',
+}
+
+
+
 const DetailsPage = async ({params}) => {
 
   const data = await getItemDetails(params.itemid);

@@ -1,11 +1,14 @@
 import InstrumentsListContainer from "@/components/InstrumentsListContainer/InstrumentsListContainer";
 
+export const metadata = {
+  title: 'Melody Mart - Instruments',
+  description: 'Melody Mart instruments list page',
+}
+
+
 const InstrumentList = async({params}) => {
 
-
-
   const instumentList = await getInstrumentListData(params.instrument);
-
 
   return (
     <InstrumentsListContainer data={instumentList}/>
