@@ -63,7 +63,7 @@ const closeMenuModal = () => {
 
       <Link href={'/home'} className='links'>
 
-      <Image src={'/assets/logoPage.png'} alt='melody mart logo' className={classes.logo} width={100} height={100}></Image>
+      <Image src={'/assets/logo-instrument-music-app-2.png'} alt='melody mart logo' className={classes.logo} width={100} height={100}></Image>
 
       </Link>
 
